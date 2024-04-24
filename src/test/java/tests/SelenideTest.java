@@ -35,6 +35,20 @@ public class SelenideTest {
         //- Откройте страницу SoftAssertions
         $("#wiki-body .markdown-body ul").$(byTagAndText("a", "Soft assertions")).click();
         //проверьте что внутри есть пример кода для JUnit5
-        $("#wiki-body .markdown-body").shouldHave(text("Using JUnit5 extend test class:"));
+        $("#wiki-body .markdown-body").shouldHave(text(
+                """
+                        @ExtendWith({SoftAssertsExtension.class})
+                        class Tests {
+                          @Test
+                          void test() {
+                            Configuration.assertionMode = SOFT;
+                            open("page.html");
+                                        
+                            $("#first").should(visible).click();
+                            $("#second").should(visible).click();
+                          }
+                        }               
+                """
+        ));
     }
 }
