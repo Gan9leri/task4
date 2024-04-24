@@ -43,11 +43,11 @@ public class SelenideTest {
                           void test() {
                             Configuration.assertionMode = SOFT;
                             open("page.html");
-                                        
+                
                             $("#first").should(visible).click();
                             $("#second").should(visible).click();
                           }
-                        }               
+                        }
                 """
         ));
     }
